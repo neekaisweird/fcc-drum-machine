@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Sen&display=swap');
+#drum-machine #display,
+.drum-pad kbd {
+  font-family: 'Sen', sans-serif;
+  line-height: 70px;
+  color: #1f242b;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #1f242b;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 60%;
+}
+
+#drum-machine {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  width: 769px;
+}
+
+#drum-machine #display {
+  background-color: #d4d7dc;
+  width: 130px;
+  height: 70px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.drum-pad {
+  background-color: #d4d7dc;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+}
+
+.drum-pad:hover {
+  cursor: pointer;
+}
+
+.drum-pad kbd {
+  font-size: 3rem;
+}
+
+.selected {
+  -webkit-animation-name: upanddown;
+  animation-name: upanddown;
+  -webkit-animation-duration: 1800ms;
+  animation-duration: 1800ms;
+}
+
+@-webkit-keyframes upanddown {
+  0% {
+    height: 70px;
+    background-color: #d4d7dc;
+  }
+  30% {
+    height: 350px;
+    background-color: #79e888;
+  }
+  80% {
+    height: 70px;
+  }
+  100% {
+    background-color: #d4d7dc;
+  }
+}
+
+@keyframes upanddown {
+  0% {
+    height: 70px;
+    background-color: #d4d7dc;
+  }
+  30% {
+    height: 350px;
+    background-color: #79e888;
+  }
+  80% {
+    height: 70px;
+  }
+  100% {
+    background-color: #d4d7dc;
+  }
+}
