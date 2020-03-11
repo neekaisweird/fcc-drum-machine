@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Sen&display=swap');
+$primary-color: #d4d7dc;
+$secondary-color: #1f242b;
+$primary-font: 'Sen', sans-serif;
+$box-height: 70px;
+$active-box-height: 350px;
+
+%font {
+  font-family: $primary-font;
+  line-height: $box-height;
+  color: $secondary-color;
+}
+html {
+  height: 100%;
+}
+body {
+  background-color: $secondary-color;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 60%;
+}
+
+#drum-machine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: ($box-height * 9) + 130px +9px;
+
+  #display {
+    @extend %font;
+    background-color: $primary-color;
+    width: 130px;
+    height: $box-height;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+}
+
+.drum-pad {
+  background-color: $primary-color;
+  width: $box-height;
+  height: $box-height;
+  text-align: center;
+  &:hover {
+    cursor: pointer;
+  }
+  kbd {
+    @extend %font;
+    font-size: 3rem;
+  }
+}
+
+.selected {
+  animation-name: upanddown;
+  animation-duration: 1800ms;
+}
+
+@keyframes upanddown {
+  0% {
+    height: $box-height;
+    background-color: $primary-color;
+  }
+  30% {
+    height: $active-box-height;
+    background-color: pink;
+  }
+  80% {
+    height: $box-height;
+    background-color: $primary-color;
+  }
+}
