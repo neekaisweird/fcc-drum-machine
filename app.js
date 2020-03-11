@@ -12,7 +12,14 @@ const keys = [
   { code: 67, letter: 'C', sound: 'Tabla' }
 ];
 
-function playAudio(e) {
+function playAudio(drumPad, audio, foundKey) {
+  display.innerText = foundKey.sound;
+  audio.currentTime = 0;
+  audio.play();
+  drumPad.classList.add('selected');
+}
+
+function findKey(e) {
   let key = e.keyCode;
   let foundKey = keys.find(k => k.code === key);
   if (!foundKey) {
@@ -20,10 +27,21 @@ function playAudio(e) {
   }
   let audio = document.getElementById(foundKey.letter);
   let drumPad = audio.parentElement;
-  display.innerText = foundKey.sound;
-  audio.currentTime = 0;
-  audio.play();
-  drumPad.classList.add('selected');
+  playAudio(drumPad, audio, foundKey);
+}
+
+function findTarget(e) {
+  if (e.target.classList.contains('drum-pad')) {
+    let drumPad = e.target;
+    let audio = drumPad.children[1];
+    let foundKey = keys.find(k => k.letter === drumPad.children[0].innerText);
+    playAudio(drumPad, audio, foundKey);
+  } else {
+    let foundKey = keys.find(k => k.letter === e.target.innerText);
+    let drumPad = e.target.parentElement;
+    let audio = drumPad.children[1];
+    playAudio(drumPad, audio, foundKey);
+  }
 }
 
 function removeClass(e) {
@@ -31,4 +49,5 @@ function removeClass(e) {
 }
 
 drums.forEach(drum => drum.addEventListener('animationend', removeClass));
-window.addEventListener('keydown', playAudio);
+drums.forEach(drum => drum.addEventListener('click', findTarget));
+window.addEventListener('keydown', findKey);
